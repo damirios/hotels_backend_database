@@ -47,9 +47,11 @@ CREATE TABLE audience(
     quantity int
 );
 
+CREATE TYPE role AS ENUM ('main_role', 'dubbing_role');
 CREATE TABLE film_person(
     film_id int REFERENCES film(film_id),
     person_id int REFERENCES person(person_id),
+    person_role role,
 
     CONSTRAINT film_person_pkey PRIMARY KEY (film_id, person_id)
 );
